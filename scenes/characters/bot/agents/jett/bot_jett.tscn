@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://stdwcfsk7l4"]
+
+[ext_resource type="PackedScene" uid="uid://g3cy2xqd8cho" path="res://scenes/characters/bot/base_bot.tscn" id="1_dehqf"]
+[ext_resource type="Texture2D" uid="uid://bw2tbbtsltewt" path="res://assets/agents/jett/jett-idle.png" id="2_uwxwl"]
+[ext_resource type="Texture2D" uid="uid://cn3wu6paoynie" path="res://assets/agents/jett/jett-run.png" id="3_gnw6k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly4ov"]
+atlas = ExtResource("2_uwxwl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8stg"]
+atlas = ExtResource("2_uwxwl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bgvk"]
+atlas = ExtResource("2_uwxwl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrbf0"]
+atlas = ExtResource("3_gnw6k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55rw0"]
+atlas = ExtResource("3_gnw6k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hnrw"]
+atlas = ExtResource("3_gnw6k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gnv7"]
+atlas = ExtResource("3_gnw6k")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0xjj"]
+atlas = ExtResource("3_gnw6k")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5joge"]
+atlas = ExtResource("3_gnw6k")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyjk6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly4ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8stg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bgvk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrbf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55rw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hnrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gnv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0xjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5joge")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[node name="BotJett" unique_id=1326751751 instance=ExtResource("1_dehqf")]
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=1790519976]
+sprite_frames = SubResource("SpriteFrames_wyjk6")
+autoplay = ""

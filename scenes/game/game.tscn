@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c1heybefkqulp"]
+
+[ext_resource type="PackedScene" uid="uid://buo8vco7aen2b" path="res://scenes/characters/player/agents/sova/sova.tscn" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://byo6km8hgki4l" path="res://scenes/environment/maps/haven/map_haven.tscn" id="3_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://bw61r5jts2wgh" path="res://scenes/characters/bot/agents/brimstone/bot_brimstone.tscn" id="3_lfrn8"]
+[ext_resource type="PackedScene" uid="uid://stdwcfsk7l4" path="res://scenes/characters/bot/agents/jett/bot_jett.tscn" id="4_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://b7rv1ah0jewxj" path="res://scenes/characters/bot/agents/sova/bot_sova.tscn" id="5_bdhmt"]
+
+[node name="Game" type="Node2D" unique_id=1905201131]
+
+[node name="Sova" parent="." unique_id=1276264900 instance=ExtResource("1_sul5r")]
+position = Vector2(234, 218)
+collision_mask = 1
+
+[node name="MapHaven" parent="." unique_id=1416724086 instance=ExtResource("3_0sr1o")]
+
+[node name="BotBrimstone" parent="." unique_id=1326751751 instance=ExtResource("3_lfrn8")]
+position = Vector2(152, 72)
+
+[node name="BotJett" parent="." unique_id=836005010 instance=ExtResource("4_5i0tg")]
+position = Vector2(320, 72)
+
+[node name="BotSova" parent="." unique_id=999876264 instance=ExtResource("5_bdhmt")]
+position = Vector2(264, 48)
+
+[node name="BotBrimstone2" parent="." unique_id=800926169 instance=ExtResource("3_lfrn8")]
+position = Vector2(376, 32)
+
+[node name="BotSova2" parent="." unique_id=1427231815 instance=ExtResource("5_bdhmt")]
+position = Vector2(96, 72)
+
+[node name="BotJett2" parent="." unique_id=1803038083 instance=ExtResource("4_5i0tg")]
+position = Vector2(184, 24)

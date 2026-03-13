@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://dq7pymh3ad1lc"]
+
+[ext_resource type="Script" uid="uid://b3cts1gir3lgw" path="res://scenes/characters/player/agents/sova/abilities/sova_dart.gd" id="1_2n452"]
+[ext_resource type="Texture2D" uid="uid://du1cyx6eg2n2b" path="res://assets/abilities/sova/sova-dart.png" id="1_dglyg"]
+[ext_resource type="Texture2D" uid="uid://c72ky6hl76hyr" path="res://assets/abilities/sova/sova-dart-explosion.png" id="3_g8wsm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yntjf"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c0rq"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdqwy"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljj6v"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2own3"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f7v6"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib4v8"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ketp"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga5tm"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p3o1"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opcbe"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq14p"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3dr5"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj78h"]
+atlas = ExtResource("3_g8wsm")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8evq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yntjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c0rq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdqwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljj6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2own3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f7v6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ib4v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ketp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga5tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p3o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opcbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq14p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3dr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj78h")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2n452"]
+radius = 1.0
+
+[node name="SovaDart" type="Area2D" unique_id=1102323540]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_2n452")
+
+[node name="DartSprite2D" type="Sprite2D" parent="." unique_id=582280333]
+unique_name_in_owner = true
+rotation = 1.5707964
+texture = ExtResource("1_dglyg")
+
+[node name="DartExplosionAnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=14591785]
+unique_name_in_owner = true
+position = Vector2(8, 0)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_q8evq")
+animation = &"explosion"
+frame = 13
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1701910705]
+position = Vector2(8, 0)
+shape = SubResource("CircleShape2D_2n452")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

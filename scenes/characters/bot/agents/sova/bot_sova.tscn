@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://b7rv1ah0jewxj"]
+
+[ext_resource type="PackedScene" uid="uid://g3cy2xqd8cho" path="res://scenes/characters/bot/base_bot.tscn" id="1_drvaa"]
+[ext_resource type="Texture2D" uid="uid://bs1podvqpnqjo" path="res://assets/agents/sova/sova-idle.png" id="2_lrg50"]
+[ext_resource type="Texture2D" uid="uid://c7hf56y4p35da" path="res://assets/agents/sova/sova-run.png" id="3_ao25i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrqfb"]
+atlas = ExtResource("2_lrg50")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbede"]
+atlas = ExtResource("2_lrg50")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7flo6"]
+atlas = ExtResource("2_lrg50")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmpvr"]
+atlas = ExtResource("3_ao25i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab0mw"]
+atlas = ExtResource("3_ao25i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vxkl"]
+atlas = ExtResource("3_ao25i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n71gg"]
+atlas = ExtResource("3_ao25i")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5icr"]
+atlas = ExtResource("3_ao25i")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwnw7"]
+atlas = ExtResource("3_ao25i")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_klsmd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrqfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbede")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7flo6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmpvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab0mw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vxkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n71gg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5icr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwnw7")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[node name="BotSova" unique_id=1326751751 instance=ExtResource("1_drvaa")]
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1790519976]
+sprite_frames = SubResource("SpriteFrames_klsmd")
+autoplay = ""

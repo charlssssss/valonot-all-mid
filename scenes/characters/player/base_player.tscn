@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://dtqx82iva07q4"]
+
+[ext_resource type="Script" uid="uid://b2u7xq51jpsqk" path="res://scenes/characters/player/base_player.gd" id="1_fwj7x"]
+[ext_resource type="Texture2D" uid="uid://dcwlfvsoffcuw" path="res://assets/agents/brimstone/brimstone-idle.png" id="1_wxadh"]
+[ext_resource type="Script" uid="uid://dcwu6bx4oxers" path="res://scripts/state_machines/move_state_machine/MoveStateMachine.gd" id="2_s37bh"]
+[ext_resource type="Script" uid="uid://dp380omexjdg7" path="res://scripts/state_machines/move_state_machine/states/Idle.gd" id="3_fwj7x"]
+[ext_resource type="PackedScene" uid="uid://c27u1wlhy77vr" path="res://scenes/ui/heath_bar/health_bar.tscn" id="3_la6g8"]
+[ext_resource type="Texture2D" uid="uid://c4b5qq56thbdj" path="res://assets/agents/brimstone/brimstone-run.png" id="3_lsm8o"]
+[ext_resource type="Script" uid="uid://by3r6gc260tgn" path="res://scripts/state_machines/move_state_machine/states/Run.gd" id="4_la6g8"]
+[ext_resource type="Script" uid="uid://e1x2nwmhvtfb" path="res://scripts/state_machines/ability_state_machine/AbilityStateMachine.gd" id="8_1qiad"]
+[ext_resource type="Script" uid="uid://nk0ki83wsk1y" path="res://scripts/state_machines/ability_state_machine/states/AimAngle.gd" id="9_e4oyu"]
+[ext_resource type="Script" uid="uid://bhtvwwac7tmpk" path="res://scripts/state_machines/ability_state_machine/states/AimPower.gd" id="10_xcr5b"]
+[ext_resource type="Texture2D" uid="uid://c5offkhkn4jph" path="res://assets/others/aim-path.png" id="11_1qiad"]
+[ext_resource type="Texture2D" uid="uid://c2h3p4qkjdcud" path="res://assets/others/shadow.png" id="12_e4oyu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm40s"]
+atlas = ExtResource("1_wxadh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4k3l"]
+atlas = ExtResource("1_wxadh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s37bh"]
+atlas = ExtResource("1_wxadh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hc4r"]
+atlas = ExtResource("3_lsm8o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te5rc"]
+atlas = ExtResource("3_lsm8o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7rg7"]
+atlas = ExtResource("3_lsm8o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qiad"]
+atlas = ExtResource("3_lsm8o")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4oyu"]
+atlas = ExtResource("3_lsm8o")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcr5b"]
+atlas = ExtResource("3_lsm8o")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwj7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm40s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4k3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s37bh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hc4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te5rc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7rg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qiad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4oyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcr5b")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_la6g8"]
+radius = 5.0
+height = 24.0
+
+[node name="BasePlayer" type="CharacterBody2D" unique_id=1276264900 node_paths=PackedStringArray("animation", "move_state_machine", "ability_state_machine")]
+collision_mask = 2
+script = ExtResource("1_fwj7x")
+animation = NodePath("AnimatedSprite2D")
+move_state_machine = NodePath("MoveStateMachine")
+ability_state_machine = NodePath("AbilityStateMachine")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1916393270]
+sprite_frames = SubResource("SpriteFrames_fwj7x")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1160999713]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_la6g8")
+
+[node name="HealthBar" parent="." unique_id=1841369283 instance=ExtResource("3_la6g8")]
+offset_left = -9.0
+offset_top = -15.0
+offset_right = 9.0
+offset_bottom = -13.0
+
+[node name="ArrowPivot" type="Node2D" parent="." unique_id=1694073708]
+z_index = -1
+
+[node name="AimAngle" type="Line2D" parent="ArrowPivot" unique_id=1109621051]
+texture_repeat = 2
+points = PackedVector2Array(0, -1, 0, -32)
+width = 1.0
+texture = ExtResource("11_1qiad")
+texture_mode = 1
+
+[node name="ShootPoint" type="Marker2D" parent="ArrowPivot/AimAngle" unique_id=1014105845]
+unique_name_in_owner = true
+
+[node name="AimRay" type="Line2D" parent="." unique_id=1551114354]
+z_index = -1
+texture_repeat = 2
+points = PackedVector2Array(200, 0)
+width = 1.0
+texture = ExtResource("11_1qiad")
+texture_mode = 1
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1584166611]
+z_index = -1
+position = Vector2(0, 16)
+texture = ExtResource("12_e4oyu")
+
+[node name="MoveStateMachine" type="Node" parent="." unique_id=1826234988 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_s37bh")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="MoveStateMachine" unique_id=1677718693]
+script = ExtResource("3_fwj7x")
+animation_name = "idle"
+
+[node name="Run" type="Node" parent="MoveStateMachine" unique_id=1750365643]
+script = ExtResource("4_la6g8")
+animation_name = "run"
+
+[node name="AbilityStateMachine" type="Node" parent="." unique_id=1031940569 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_1qiad")
+initial_state = NodePath("AimAngle")
+
+[node name="AimAngle" type="Node" parent="AbilityStateMachine" unique_id=562340136]
+script = ExtResource("9_e4oyu")
+
+[node name="AimPower" type="Node" parent="AbilityStateMachine" unique_id=1245096280]
+script = ExtResource("10_xcr5b")
+min_distance = 50.0
+power_speed = 5.0
