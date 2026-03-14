@@ -3,7 +3,7 @@ class_name AbilityState
 
 signal transitioned
 
-var char_body: BaseCharacter
+var char_body: CharacterBody2D
 
 func enter() -> void:
 	pass

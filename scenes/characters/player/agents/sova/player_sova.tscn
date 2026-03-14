@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dtqx82iva07q4" path="res://scenes/characters/player/base_player.tscn" id="1_ymspe"]
 [ext_resource type="Texture2D" uid="uid://bs1podvqpnqjo" path="res://assets/agents/sova/sova-idle.png" id="2_vk6gm"]
+[ext_resource type="Script" uid="uid://cwyvvjwg7swkg" path="res://scenes/characters/player/agents/sova/player_sova.gd" id="2_wka12"]
 [ext_resource type="Texture2D" uid="uid://c7hf56y4p35da" path="res://assets/agents/sova/sova-run.png" id="3_415xg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_415xg"]
@@ -80,7 +81,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Sova" unique_id=1276264900 instance=ExtResource("1_ymspe")]
+[node name="PlayerSova" unique_id=1276264900 instance=ExtResource("1_ymspe")]
+script = ExtResource("2_wka12")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1916393270]
 sprite_frames = SubResource("SpriteFrames_kgod5")

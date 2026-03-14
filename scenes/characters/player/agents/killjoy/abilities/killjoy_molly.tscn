@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://88xm85ugh52t"]
+
+[ext_resource type="Script" uid="uid://dre8qihfxyse8" path="res://scenes/characters/player/agents/killjoy/abilities/killjoy_molly.gd" id="1_ylpxx"]
+[ext_resource type="Texture2D" uid="uid://d742snnnkx3b" path="res://assets/abilities/killjoy/killkoy-molly.png" id="2_ylpxx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2n452"]
+radius = 8.0
+
+[node name="KilljoyMolly" type="Area2D" unique_id=1102323540]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_ylpxx")
+
+[node name="MollySprite2D" type="Sprite2D" parent="." unique_id=582280333]
+rotation = 1.5707964
+texture = ExtResource("2_ylpxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1701910705]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_2n452")

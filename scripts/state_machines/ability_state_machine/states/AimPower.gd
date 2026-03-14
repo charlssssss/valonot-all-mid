@@ -26,7 +26,7 @@ func process_frame(delta: float) -> void:
 
 func process_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability_1"):
-		ability_one()
+		char_body.use_ability_1(shoot_point.global_position, char_body.locked_aim_angle, current_distance)
 		transitioned.emit(self, "aimangle")
 
 
@@ -36,17 +36,3 @@ func update_ray() -> void:
 		Vector2.ZERO,
 		dir * current_distance
 	]
-
-
-func ability_one():
-	var sova_dart = load("res://scenes/characters/player/agents/sova/abilities/sova_dart.tscn")
-	if sova_dart == null:
-		return
-	
-	var new_sova_dart = sova_dart.instantiate()
-	
-	new_sova_dart.global_position = shoot_point.global_position
-	new_sova_dart.global_rotation = char_body.locked_aim_angle
-	new_sova_dart.max_range = current_distance
-	
-	char_body.get_tree().current_scene.add_child(new_sova_dart)
