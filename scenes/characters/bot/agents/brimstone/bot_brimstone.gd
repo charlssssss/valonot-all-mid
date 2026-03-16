@@ -1,0 +1,2 @@
+extends BaseBot
+class_name BotBrimstone

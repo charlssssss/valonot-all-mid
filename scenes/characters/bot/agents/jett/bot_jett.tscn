@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://stdwcfsk7l4"]
 
 [ext_resource type="PackedScene" uid="uid://g3cy2xqd8cho" path="res://scenes/characters/bot/base_bot.tscn" id="1_dehqf"]
+[ext_resource type="Script" uid="uid://dybypqpyn4tnp" path="res://scenes/characters/bot/agents/jett/bot_jett.gd" id="2_gnw6k"]
 [ext_resource type="Texture2D" uid="uid://bw2tbbtsltewt" path="res://assets/agents/jett/jett-idle.png" id="2_uwxwl"]
 [ext_resource type="Texture2D" uid="uid://cn3wu6paoynie" path="res://assets/agents/jett/jett-run.png" id="3_gnw6k"]
 
@@ -81,7 +82,8 @@ animations = [{
 }]
 
 [node name="BotJett" unique_id=1326751751 instance=ExtResource("1_dehqf")]
+script = ExtResource("2_gnw6k")
 
-[node name="AnimatedSprite2D" parent="." index="1" unique_id=1790519976]
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1790519976]
 sprite_frames = SubResource("SpriteFrames_wyjk6")
 autoplay = ""

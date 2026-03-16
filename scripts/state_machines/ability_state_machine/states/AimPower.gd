@@ -12,7 +12,7 @@ var current_distance := 0.0
 
 func enter() -> void:
 	power_time = 0
-	char_body.arrow_pivot.visible = false
+	char_body.aim_pivot.visible = false
 	char_body.aim_ray.visible = true
 
 

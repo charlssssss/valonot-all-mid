@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bw61r5jts2wgh" path="res://scenes/characters/bot/agents/brimstone/bot_brimstone.tscn" id="3_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://stdwcfsk7l4" path="res://scenes/characters/bot/agents/jett/bot_jett.tscn" id="4_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://b7rv1ah0jewxj" path="res://scenes/characters/bot/agents/sova/bot_sova.tscn" id="5_bdhmt"]
-[ext_resource type="PackedScene" uid="uid://d4iwdt0yqvcae" path="res://scenes/characters/player/agents/killjoy/player_killjoy.tscn" id="5_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://ciib85xigjfbi" path="res://scenes/characters/bot/agents/killjoy/bot_killjoy.tscn" id="6_5i0tg"]
+[ext_resource type="PackedScene" uid="uid://d4iwdt0yqvcae" path="res://scenes/characters/player/agents/killjoy/player_killjoy.tscn" id="6_bdhmt"]
 
 [node name="Game" type="Node2D" unique_id=1905201131]
 
@@ -13,15 +13,19 @@
 
 [node name="BotSova" parent="." unique_id=999876264 instance=ExtResource("5_bdhmt")]
 position = Vector2(264, 48)
+floating_text_scene = null
 
 [node name="BotKilljoy" parent="." unique_id=1326751751 instance=ExtResource("6_5i0tg")]
-position = Vector2(128, 48)
+position = Vector2(126, 46)
+floating_text_scene = null
 
 [node name="BotBrimstone" parent="." unique_id=31768851 instance=ExtResource("3_lfrn8")]
 position = Vector2(376, 64)
+floating_text_scene = null
 
 [node name="BotJett" parent="." unique_id=1102412746 instance=ExtResource("4_5i0tg")]
 position = Vector2(200, 96)
+floating_text_scene = null
 
-[node name="PlayerKilljoy" parent="." unique_id=1276264900 instance=ExtResource("5_lfrn8")]
-position = Vector2(243, 219)
+[node name="PlayerKilljoy" parent="." unique_id=1276264900 instance=ExtResource("6_bdhmt")]
+position = Vector2(250, 220)

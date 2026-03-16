@@ -1,5 +1,5 @@
-extends BasePlayer
-class_name PlayerSova
+extends BaseBot
+class_name  BotSova
 
 func use_ability_1(ability_position: Vector2, angle: float, power: float) -> void:
 	var sova_dart = preload("res://scenes/characters/player/agents/sova/abilities/sova_dart.tscn")

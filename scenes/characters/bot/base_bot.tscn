@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://g3cy2xqd8cho"]
 
-[ext_resource type="Script" uid="uid://u5makqy6mgcl" path="res://scenes/characters/bot/base_bot.gd" id="1_80lla"]
+[ext_resource type="Script" uid="uid://bcvfr8a1plyqa" path="res://scenes/characters/bot/base_bot.gd" id="1_80lla"]
 [ext_resource type="Texture2D" uid="uid://dcwlfvsoffcuw" path="res://assets/agents/brimstone/brimstone-idle.png" id="1_j1umy"]
+[ext_resource type="PackedScene" uid="uid://ixc6k4evvgyd" path="res://scenes/ui/floating_text/floating_text.tscn" id="2_4u4n7"]
 [ext_resource type="Texture2D" uid="uid://c4b5qq56thbdj" path="res://assets/agents/brimstone/brimstone-run.png" id="2_80lla"]
 [ext_resource type="PackedScene" uid="uid://c27u1wlhy77vr" path="res://scenes/ui/heath_bar/health_bar.tscn" id="3_u4hv7"]
 [ext_resource type="Script" uid="uid://divcibrm8i11j" path="res://scripts/state_machines/bot_state_machine/BotStateMachine.gd" id="4_14ga1"]
 [ext_resource type="Script" uid="uid://dm26hfny28cvn" path="res://scripts/state_machines/bot_state_machine/states/Wander.gd" id="5_fjbde"]
+[ext_resource type="Texture2D" uid="uid://c5offkhkn4jph" path="res://assets/others/aim-path.png" id="5_wd64t"]
 [ext_resource type="Script" uid="uid://4dqjidl0h56h" path="res://scripts/state_machines/bot_state_machine/states/Dodge.gd" id="7_14ga1"]
 [ext_resource type="Texture2D" uid="uid://c2h3p4qkjdcud" path="res://assets/others/shadow.png" id="7_u4hv7"]
+[ext_resource type="Script" uid="uid://uttampt4a6xv" path="res://scripts/state_machines/bot_ability_state_machine/BotAbilityStateMachine.gd" id="9_7k8ct"]
+[ext_resource type="Script" uid="uid://dinet4r3dd2rp" path="res://scripts/state_machines/bot_ability_state_machine/states/Idle.gd" id="10_a0pyg"]
+[ext_resource type="Script" uid="uid://bpqnngyfu714b" path="res://scripts/state_machines/bot_ability_state_machine/states/Cast.gd" id="10_wd64t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjbde"]
 atlas = ExtResource("1_j1umy")
@@ -92,11 +97,16 @@ height = 24.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_u4hv7"]
 radius = 29.0
 
-[node name="BaseBot" type="CharacterBody2D" unique_id=1326751751 node_paths=PackedStringArray("animation", "bot_state_machine")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_14ga1"]
+radius = 176.00284
+
+[node name="BaseBot" type="CharacterBody2D" unique_id=1326751751 node_paths=PackedStringArray("animation", "bot_state_machine", "bot_ability_state_machine")]
 collision_layer = 2
 script = ExtResource("1_80lla")
 animation = NodePath("AnimatedSprite2D")
 bot_state_machine = NodePath("BotStateMachine")
+bot_ability_state_machine = NodePath("BotAbilityStateMachine")
+floating_text_scene = ExtResource("2_4u4n7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1790519976]
 sprite_frames = SubResource("SpriteFrames_7k8ct")
@@ -115,6 +125,35 @@ collision_mask = 65536
 shape = SubResource("CircleShape2D_u4hv7")
 debug_color = Color(0.8215589, 0.39201888, 0.24524704, 0.41960785)
 
+[node name="AttackRangeArea2D" type="Area2D" parent="." unique_id=835688934]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea2D" unique_id=316109316]
+shape = SubResource("CircleShape2D_14ga1")
+debug_color = Color(0.82993114, 0.35971773, 0.42500448, 0.41960785)
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=150358916]
+z_index = -1
+position = Vector2(0, 16)
+texture = ExtResource("7_u4hv7")
+
+[node name="BotAimPivot" type="Node2D" parent="." unique_id=1385344695]
+unique_name_in_owner = true
+position = Vector2(0, 4)
+rotation = 3.1415927
+
+[node name="AimAngle" type="Line2D" parent="BotAimPivot" unique_id=89594011]
+visible = false
+texture_repeat = 2
+points = PackedVector2Array(0, -1, 0, -32)
+width = 1.0
+texture = ExtResource("5_wd64t")
+texture_mode = 1
+
+[node name="BotShootPoint" type="Marker2D" parent="BotAimPivot" unique_id=27178440]
+unique_name_in_owner = true
+position = Vector2(0, -14)
+
 [node name="HealthBar" parent="." unique_id=1841369283 instance=ExtResource("3_u4hv7")]
 offset_left = -9.0
 offset_top = -15.0
@@ -131,12 +170,21 @@ animation_name = "run"
 
 [node name="Dodge" type="Node" parent="BotStateMachine" unique_id=1645860551]
 script = ExtResource("7_14ga1")
+dodge_speed_multiplier = 1.2
 animation_name = "run"
 
-[node name="Shadow" type="Sprite2D" parent="." unique_id=150358916]
-z_index = -1
-position = Vector2(0, 16)
-texture = ExtResource("7_u4hv7")
+[node name="BotAbilityStateMachine" type="Node" parent="." unique_id=1736159662 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("9_7k8ct")
+initial_state = NodePath("Idle")
+
+[node name="Cast" type="Node" parent="BotAbilityStateMachine" unique_id=2125318870]
+script = ExtResource("10_wd64t")
+
+[node name="Idle" type="Node" parent="BotAbilityStateMachine" unique_id=1245363165]
+script = ExtResource("10_a0pyg")
+
+[node name="Cooldown" type="Node" parent="BotAbilityStateMachine" unique_id=1161977784]
 
 [connection signal="area_entered" from="DodgeArea2D" to="BotStateMachine/Wander" method="_on_dodge_area_2d_area_entered"]
 [connection signal="area_exited" from="DodgeArea2D" to="BotStateMachine/Dodge" method="_on_dodge_area_2d_area_exited"]
+[connection signal="body_entered" from="AttackRangeArea2D" to="BotAbilityStateMachine/Idle" method="_on_attack_range_area_2d_body_entered"]

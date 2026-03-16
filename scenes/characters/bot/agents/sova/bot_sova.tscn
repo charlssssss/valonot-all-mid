@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b7rv1ah0jewxj"]
 
 [ext_resource type="PackedScene" uid="uid://g3cy2xqd8cho" path="res://scenes/characters/bot/base_bot.tscn" id="1_drvaa"]
+[ext_resource type="Script" uid="uid://bd0rs73h5n2iw" path="res://scenes/characters/bot/agents/sova/bot_sova.gd" id="2_ao25i"]
 [ext_resource type="Texture2D" uid="uid://bs1podvqpnqjo" path="res://assets/agents/sova/sova-idle.png" id="2_lrg50"]
 [ext_resource type="Texture2D" uid="uid://c7hf56y4p35da" path="res://assets/agents/sova/sova-run.png" id="3_ao25i"]
 
@@ -81,6 +82,7 @@ animations = [{
 }]
 
 [node name="BotSova" unique_id=1326751751 instance=ExtResource("1_drvaa")]
+script = ExtResource("2_ao25i")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1790519976]
 sprite_frames = SubResource("SpriteFrames_klsmd")

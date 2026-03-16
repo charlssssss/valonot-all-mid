@@ -118,6 +118,7 @@ top_level = true
 collision_layer = 65536
 collision_mask = 3
 script = ExtResource("1_2n452")
+speed = 300
 
 [node name="DartSprite2D" type="Sprite2D" parent="." unique_id=582280333]
 unique_name_in_owner = true

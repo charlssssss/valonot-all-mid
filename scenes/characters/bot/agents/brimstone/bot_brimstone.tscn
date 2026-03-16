@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bw61r5jts2wgh"]
 
 [ext_resource type="PackedScene" uid="uid://g3cy2xqd8cho" path="res://scenes/characters/bot/base_bot.tscn" id="1_bg2nv"]
+[ext_resource type="Script" uid="uid://bk3uip3o570lv" path="res://scenes/characters/bot/agents/brimstone/bot_brimstone.gd" id="2_jq2fx"]
 [ext_resource type="Texture2D" uid="uid://dcwlfvsoffcuw" path="res://assets/agents/brimstone/brimstone-idle.png" id="2_pphke"]
 [ext_resource type="Texture2D" uid="uid://c4b5qq56thbdj" path="res://assets/agents/brimstone/brimstone-run.png" id="3_jq2fx"]
 
@@ -81,6 +82,7 @@ animations = [{
 }]
 
 [node name="BotBrimstone" unique_id=1326751751 instance=ExtResource("1_bg2nv")]
+script = ExtResource("2_jq2fx")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1790519976]
 sprite_frames = SubResource("SpriteFrames_ndnpk")

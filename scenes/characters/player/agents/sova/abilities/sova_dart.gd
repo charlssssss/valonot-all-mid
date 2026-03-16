@@ -2,13 +2,13 @@ extends Area2D
 
 @export var damage: int = 10
 @export var explosion_damage_multiplier: int = 4
+@export var speed: int = 250
 
 @onready var explosion_shape:= $CollisionShape2D
 @onready var dart_sprite:= %DartSprite2D
 @onready var explosion_animation:= %DartExplosionAnimatedSprite2D
 
 var travelled_distance: float = 0
-var speed: int = 250
 var max_range: int = 400
 
 var has_exploded:= false

@@ -1,4 +1,4 @@
-extends Player
+extends BasePlayer
 class_name PlayerKilljoy
 
 func use_ability_1(position: Vector2, angle: float, power: float) -> void:
