@@ -8,19 +8,24 @@ signal transitioned
 
 var char_body: CharacterBody2D
 var enemy_body: CharacterBody2D
+var enemy_projectile: Area2D
 var animation: AnimatedSprite2D
 
 func enter() -> void:
 	animation.play(animation_name)
 
+
 func exit() -> void:
 	pass
+
 
 func process_input(_event: InputEvent) -> void:
 	pass
 
+
 func process_frame(_delta: float) -> void:
 	pass
+
 
 func process_physics(_delta: float) -> void:
 	pass

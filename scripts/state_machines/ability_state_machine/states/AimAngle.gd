@@ -14,6 +14,6 @@ func process_frame(delta: float) -> void:
 
 
 func process_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ability_1"):
+	if event.is_action_pressed("ability_1") or event.is_action_pressed("ability_2") or event.is_action_pressed("ability_3") or event.is_action_pressed("ability_4"):
 		char_body.locked_aim_angle = char_body.arrow_pivot.global_rotation - deg_to_rad(90)
 		transitioned.emit(self, "aimpower")

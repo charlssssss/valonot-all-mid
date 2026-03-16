@@ -85,3 +85,6 @@ animations = [{
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=1790519976]
 sprite_frames = SubResource("SpriteFrames_klsmd")
 autoplay = ""
+
+[node name="CollisionShape2D" parent="DodgeArea2D" parent_id_path=PackedInt32Array(1738555192) index="0" unique_id=1836460423]
+position = Vector2(0, 4)

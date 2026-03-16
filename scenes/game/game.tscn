@@ -11,33 +11,17 @@
 
 [node name="MapHaven" parent="." unique_id=1416724086 instance=ExtResource("3_0sr1o")]
 
-[node name="BotBrimstone" parent="." unique_id=1326751751 instance=ExtResource("3_lfrn8")]
-position = Vector2(152, 72)
-
-[node name="BotJett" parent="." unique_id=836005010 instance=ExtResource("4_5i0tg")]
-position = Vector2(320, 72)
-
 [node name="BotSova" parent="." unique_id=999876264 instance=ExtResource("5_bdhmt")]
 position = Vector2(264, 48)
 
-[node name="BotBrimstone2" parent="." unique_id=800926169 instance=ExtResource("3_lfrn8")]
-position = Vector2(376, 32)
+[node name="BotKilljoy" parent="." unique_id=1326751751 instance=ExtResource("6_5i0tg")]
+position = Vector2(128, 48)
 
-[node name="BotSova2" parent="." unique_id=1427231815 instance=ExtResource("5_bdhmt")]
-position = Vector2(96, 72)
+[node name="BotBrimstone" parent="." unique_id=31768851 instance=ExtResource("3_lfrn8")]
+position = Vector2(376, 64)
 
-[node name="BotJett2" parent="." unique_id=1803038083 instance=ExtResource("4_5i0tg")]
-position = Vector2(184, 24)
+[node name="BotJett" parent="." unique_id=1102412746 instance=ExtResource("4_5i0tg")]
+position = Vector2(200, 96)
 
 [node name="PlayerKilljoy" parent="." unique_id=1276264900 instance=ExtResource("5_lfrn8")]
-z_index = 0
-position = Vector2(232, 216)
-
-[node name="BotKilljoy" parent="." unique_id=704992587 instance=ExtResource("6_5i0tg")]
-position = Vector2(224, 88)
-
-[node name="BotKilljoy2" parent="." unique_id=1460998394 instance=ExtResource("6_5i0tg")]
-position = Vector2(384, 80)
-
-[node name="BotKilljoy3" parent="." unique_id=353360309 instance=ExtResource("6_5i0tg")]
-position = Vector2(128, 32)
+position = Vector2(243, 219)

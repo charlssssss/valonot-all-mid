@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bfiiobfccm2r3"]
 
 [ext_resource type="Script" uid="uid://cqvemjot8mfjs" path="res://scenes/characters/player/agents/killjoy/abilities/killjoy_molly_explosion.gd" id="1_gf3nq"]
-[ext_resource type="Texture2D" uid="uid://dos7ui6rxukst" path="res://assets/abilities/killjoy/killjoy-molly-explosion-base.png" id="2_ypgh3"]
+[ext_resource type="Texture2D" uid="uid://vynhjybih6kj" path="res://assets/abilities/killjoy/killjoy-molly-explosion-base.png" id="2_ypgh3"]
 [ext_resource type="Texture2D" uid="uid://ca3ksfc34t70q" path="res://assets/abilities/killjoy/killjoy-molly-explosion-inner.png" id="3_gf3nq"]
 [ext_resource type="Texture2D" uid="uid://cj8vmqaqhphqa" path="res://assets/abilities/killjoy/killjoy-molly-explosion-outer.png" id="4_88p2s"]
 [ext_resource type="Texture2D" uid="uid://6xbhvhj4bap1" path="res://assets/abilities/killjoy/killjoy-molly-particle.png" id="5_88p2s"]
@@ -408,7 +408,7 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_cdvpf")
 
 [node name="KilljoyMollyExplosion" type="Area2D" unique_id=1350285236]
-collision_layer = 0
+collision_layer = 65536
 collision_mask = 3
 script = ExtResource("1_gf3nq")
 
@@ -433,7 +433,6 @@ animation = &"molly_outer"
 frame_progress = 0.89400643
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=799638950]
-visible = false
 position = Vector2(-1, 8)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_c3ojj")
@@ -442,7 +441,7 @@ shape = SubResource("CapsuleShape2D_c3ojj")
 position = Vector2(-2, 4)
 amount = 16
 texture = ExtResource("5_cdvpf")
-lifetime = 0.47000000000000003
+lifetime = 0.47
 preprocess = 1.62
 speed_scale = 0.9
 randomness = 0.2
@@ -452,7 +451,7 @@ process_material = SubResource("ParticleProcessMaterial_jkpwv")
 position = Vector2(-2, 4)
 amount = 16
 texture = ExtResource("5_88p2s")
-lifetime = 0.47000000000000003
+lifetime = 0.47
 preprocess = 1.62
 speed_scale = 0.9
 randomness = 0.2

@@ -30,7 +30,7 @@ func process_physics(delta: float) -> void:
 	if current_state:
 		current_state.process_physics(delta)
 
-func on_child_transition(state: BotState, new_state_name: String, body: CharacterBody2D) -> void:
+func on_child_transition(state: BotState, new_state_name: String, body: CharacterBody2D, projectile: Area2D) -> void:
 	if state != current_state:
 		return
 	
@@ -42,6 +42,7 @@ func on_child_transition(state: BotState, new_state_name: String, body: Characte
 		current_state.exit()
 	
 	new_state.enemy_body = body
+	new_state.enemy_projectile = projectile
 	new_state.enter()
 	current_state = new_state
 

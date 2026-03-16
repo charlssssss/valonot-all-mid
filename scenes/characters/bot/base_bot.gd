@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var animation: AnimatedSprite2D
 @export var bot_state_machine: BotStateMachine
+@export var floating_text_scene: PackedScene
 @export var health: int = 100
 
 @onready var health_bar = $HealthBar
@@ -26,6 +27,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage: int) -> void:
 	health -= damage
 	health_bar.health = health
+	UiUtils.show_floating_text(global_position, damage)
 	
 	if health_bar != null and health_bar.health <= 0:
 		die()

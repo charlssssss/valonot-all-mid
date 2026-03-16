@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 
 func apply_damage():
 	for body in bodies_inside:
-		if is_instance_valid(body) and body.has_method("take_damage"):
+		if body is CharacterBody2D and body.has_method("take_damage"):
 			body.take_damage(round(current_damage))
 
 

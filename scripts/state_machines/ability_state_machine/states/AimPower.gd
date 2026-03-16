@@ -28,6 +28,15 @@ func process_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ability_1"):
 		char_body.use_ability_1(shoot_point.global_position, char_body.locked_aim_angle, current_distance)
 		transitioned.emit(self, "aimangle")
+	elif event.is_action_pressed("ability_2"):
+		char_body.use_ability_2(shoot_point.global_position, char_body.locked_aim_angle, current_distance)
+		transitioned.emit(self, "aimangle")
+	elif event.is_action_pressed("ability_3"):
+		char_body.use_ability_3(shoot_point.global_position, char_body.locked_aim_angle, current_distance)
+		transitioned.emit(self, "aimangle")
+	elif event.is_action_pressed("ability_4"):
+		char_body.use_ability_4(shoot_point.global_position, char_body.locked_aim_angle, current_distance)
+		transitioned.emit(self, "aimangle")
 
 
 func update_ray() -> void:

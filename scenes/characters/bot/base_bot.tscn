@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c27u1wlhy77vr" path="res://scenes/ui/heath_bar/health_bar.tscn" id="3_u4hv7"]
 [ext_resource type="Script" uid="uid://divcibrm8i11j" path="res://scripts/state_machines/bot_state_machine/BotStateMachine.gd" id="4_14ga1"]
 [ext_resource type="Script" uid="uid://dm26hfny28cvn" path="res://scripts/state_machines/bot_state_machine/states/Wander.gd" id="5_fjbde"]
+[ext_resource type="Script" uid="uid://4dqjidl0h56h" path="res://scripts/state_machines/bot_state_machine/states/Dodge.gd" id="7_14ga1"]
 [ext_resource type="Texture2D" uid="uid://c2h3p4qkjdcud" path="res://assets/others/shadow.png" id="7_u4hv7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjbde"]
@@ -88,6 +89,9 @@ animations = [{
 radius = 5.0
 height = 24.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u4hv7"]
+radius = 29.0
+
 [node name="BaseBot" type="CharacterBody2D" unique_id=1326751751 node_paths=PackedStringArray("animation", "bot_state_machine")]
 collision_layer = 2
 script = ExtResource("1_80lla")
@@ -103,6 +107,14 @@ autoplay = "idle"
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_a0pyg")
 
+[node name="DodgeArea2D" type="Area2D" parent="." unique_id=1738555192]
+collision_layer = 0
+collision_mask = 65536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DodgeArea2D" unique_id=1836460423]
+shape = SubResource("CircleShape2D_u4hv7")
+debug_color = Color(0.8215589, 0.39201888, 0.24524704, 0.41960785)
+
 [node name="HealthBar" parent="." unique_id=1841369283 instance=ExtResource("3_u4hv7")]
 offset_left = -9.0
 offset_top = -15.0
@@ -117,7 +129,14 @@ initial_state = NodePath("Wander")
 script = ExtResource("5_fjbde")
 animation_name = "run"
 
+[node name="Dodge" type="Node" parent="BotStateMachine" unique_id=1645860551]
+script = ExtResource("7_14ga1")
+animation_name = "run"
+
 [node name="Shadow" type="Sprite2D" parent="." unique_id=150358916]
 z_index = -1
 position = Vector2(0, 16)
 texture = ExtResource("7_u4hv7")
+
+[connection signal="area_entered" from="DodgeArea2D" to="BotStateMachine/Wander" method="_on_dodge_area_2d_area_entered"]
+[connection signal="area_exited" from="DodgeArea2D" to="BotStateMachine/Dodge" method="_on_dodge_area_2d_area_exited"]

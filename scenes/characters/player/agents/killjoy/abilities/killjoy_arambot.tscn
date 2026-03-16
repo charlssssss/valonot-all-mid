@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://b3w1fdugs6i4o"]
+
+[ext_resource type="Texture2D" uid="uid://1sxaboarwopm" path="res://assets/abilities/killjoy/killjoy-alarmbot.png" id="1_56nt2"]
+[ext_resource type="Script" uid="uid://ccqjl2cwh0o74" path="res://scenes/characters/player/agents/killjoy/abilities/killjoy_arambot.gd" id="1_vhrav"]
+[ext_resource type="Texture2D" uid="uid://btce581wnbcmw" path="res://assets/others/shadow-small.png" id="2_4f5lm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhrav"]
+atlas = ExtResource("1_56nt2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f5lm"]
+atlas = ExtResource("1_56nt2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmgfn"]
+atlas = ExtResource("1_56nt2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1grw"]
+atlas = ExtResource("1_56nt2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b7gv"]
+atlas = ExtResource("1_56nt2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_545f4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhrav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f5lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmgfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1grw")
+}],
+"loop": true,
+"name": &"follow",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b7gv")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qao3w"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56nt2"]
+radius = 32.0
+
+[node name="KilljoyArambot" type="Area2D" unique_id=233617412 node_paths=PackedStringArray("follow_area", "animation")]
+collision_layer = 65536
+collision_mask = 2
+script = ExtResource("1_vhrav")
+follow_area = NodePath("FollowArea2D")
+animation = NodePath("AnimatedSprite2D")
+
+[node name="ShadowSprite2D" type="Sprite2D" parent="." unique_id=1065694211]
+visible = false
+position = Vector2(0, 4)
+texture = ExtResource("2_4f5lm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1584824983]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_545f4")
+animation = &"follow"
+autoplay = "idle"
+frame_progress = 0.40432197
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=89288397]
+shape = SubResource("CircleShape2D_qao3w")
+
+[node name="FollowArea2D" type="Area2D" parent="." unique_id=1905936607]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowArea2D" unique_id=281591485]
+shape = SubResource("CircleShape2D_56nt2")
+debug_color = Color(0.7092255, 0.44719076, 0.5232472, 0.41960785)
+
+[connection signal="body_entered" from="FollowArea2D" to="." method="_on_follow_area_2d_body_entered"]
